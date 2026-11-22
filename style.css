@@ -1,0 +1,471 @@
+/* ==========================================================
+   Body Scent — shared theme
+   Premium / minimal: ivory-cream-deep beige with bronze accent
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+Thai:wght@400;500;600&family=Sarabun:wght@300;400;500&display=swap");
+
+:root {
+  /* Base palette */
+  --ivory: #faf7f2;
+  --cream: #f3ede2;
+  --beige: #e4d9c6;
+  --beige-deep: #b9a88b;
+  --ink: #2e2822;
+  --ink-soft: #6b6157;
+
+  /* Accent: soft bronze / gold */
+  --bronze: #9c7a46;
+  --bronze-light: #c4a469;
+
+  /* Lines */
+  --line: rgba(46, 40, 34, 0.28);
+  --line-soft: rgba(46, 40, 34, 0.12);
+
+  /* Mood colours — used only as small touches */
+  --mood-fresh: #2f5d46;
+  --mood-sweet: #7b5aa6;
+  --mood-confident: #3e5266;
+  --mood-romance: #c46a6a;
+  --mood: var(--bronze);
+
+  /* Type */
+  --font-display: "Cormorant Garamond", "Noto Serif Thai", Georgia, serif;
+  --font-body: "Sarabun", "Noto Sans Thai", system-ui, sans-serif;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 7rem;
+
+  --container: 1120px;
+}
+
+[data-mood="fresh"] { --mood: var(--mood-fresh); }
+[data-mood="sweet"] { --mood: var(--mood-sweet); }
+[data-mood="confident"] { --mood: var(--mood-confident); }
+[data-mood="romance"] { --mood: var(--mood-romance); }
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  margin: 0 0 var(--space-2);
+}
+
+h1 { font-size: clamp(2.1rem, 5.2vw, 3.6rem); }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+h3 { font-size: 1.35rem; }
+
+p { margin: 0 0 var(--space-2); color: var(--ink-soft); }
+
+:focus-visible {
+  outline: 1px solid var(--bronze);
+  outline-offset: 4px;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.section { padding: var(--space-6) 0; }
+.section--cream { background: var(--cream); }
+
+.section-head {
+  max-width: 34rem;
+  margin: 0 auto var(--space-5);
+  text-align: center;
+}
+
+/* Thin bronze rule under headings */
+.rule {
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin: var(--space-3) auto 0;
+  background: var(--bronze-light);
+  border: 0;
+}
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--ivory);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.nav { display: flex; gap: var(--space-4); }
+
+.nav a {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--bronze-light);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-5) var(--space-3);
+  background:
+    radial-gradient(ellipse at 50% 35%, #fffdf9 0%, var(--cream) 60%, var(--beige) 130%);
+}
+
+.hero__inner { max-width: 44rem; }
+
+.hero h1 {
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.hero p {
+  max-width: 30rem;
+  margin: 0 auto var(--space-4);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.4rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.btn--accent { border-color: var(--bronze); color: var(--bronze); }
+.btn--accent:hover { background: var(--bronze); border-color: var(--bronze); color: #fff; }
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Mood cards (home) ---------- */
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.mood-card {
+  display: block;
+  padding: var(--space-4) var(--space-3);
+  background: var(--ivory);
+  border: 1px solid var(--line-soft);
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.mood-card:hover { border-color: var(--line); }
+
+.mood-card h3 { margin-bottom: var(--space-1); }
+.mood-card p { font-size: 0.95rem; margin: 0; }
+
+/* Small mood dot / underline touches */
+.mood-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mood);
+  vertical-align: middle;
+}
+
+.mood-card .mood-dot,
+.product-card .mood-dot { margin-bottom: var(--space-2); }
+
+.mood-line {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  margin: var(--space-2) auto;
+  background: var(--mood);
+}
+
+/* ---------- Filter bar (product page) ---------- */
+#filter-bar,
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.filter-btn:hover { color: var(--ink); }
+
+.filter-btn.active,
+.filter-btn[aria-pressed="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--bronze);
+}
+
+/* ---------- Product grid ---------- */
+#product-list,
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-4) var(--space-3);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  border: 1px solid var(--line-soft);
+  transition: border-color 0.3s;
+}
+
+.product-card:hover { border-color: var(--line); }
+
+.product-card__image {
+  aspect-ratio: 4 / 5;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-3);
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.product-card .meta {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-2);
+}
+
+.product-card .desc {
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--bronze);
+  margin: var(--space-1) 0 var(--space-2);
+}
+
+.product-card .btn { width: 100%; text-align: center; padding: 0.7rem 1rem; }
+
+/* ---------- Forms ---------- */
+.form {
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+form#orderForm { max-width: 34rem; margin: 0 auto; }
+
+.field { margin-bottom: var(--space-3); }
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  transition: border-color 0.25s;
+}
+
+textarea { min-height: 7rem; resize: vertical; }
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--bronze);
+}
+
+::placeholder { color: rgba(107, 97, 87, 0.6); }
+
+form .btn { width: 100%; margin-top: var(--space-2); }
+
+/* ---------- Table (admin) ---------- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line-soft);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+tbody tr:hover { background: rgba(228, 217, 198, 0.25); }
+
+/* ---------- Thank-you ---------- */
+.center-block {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-5) var(--space-3);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--line-soft);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .mood-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1rem; }
+
+  .section { padding: var(--space-5) 0; }
+  .section-head { margin-bottom: var(--space-4); }
+
+  .site-header .container { flex-direction: column; gap: var(--space-2); }
+  .nav { gap: var(--space-3); }
+
+  .mood-grid { grid-template-columns: 1fr; }
+
+  #product-list,
+  .product-grid { grid-template-columns: 1fr; }
+
+  .hero .btn { width: 100%; max-width: 20rem; }
+
+  th, td { padding: 0.7rem 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
